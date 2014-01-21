@@ -1,0 +1,109 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/base.css">
+        <link rel="stylesheet" href="styles/layout.css">
+        <link rel="stylesheet" href="styles/skeleton.css">
+        <!-- endbuild -->
+
+        <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+</head>
+  <body ng-app="ngWebglDemo">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- application content -->
+    <div class="container" ng-controller="AppCtrl">
+      
+      <!-- HEADER -->
+      <div class="sixteen columns add-bottom">
+        <div class="navbar">
+          <h1>AngularJS WebGL Directive</h1>
+        </div>
+        <hr />
+      </div>
+      <!-- END HEADER -->
+
+      <div class="tweleve columns add-bottom">
+
+        <p class="lead">AngularJS directives are siloed reusable components. This is an example of a WebGL directive built using <a href="http://threejs.org/">three.js</a>. You can pass setup information such as: <em>canvas size</em>, <em>model size</em>, <em>material</em>, <em>lighting</em>, <em>etc.</em> to the directive.</p>
+
+        <p class="lead">You can even bind these values to the WebGL context – use the controls below to resize the object or change it's material type.</p>
+        
+        <p class="lead">Events such as <em>window resizing</em> or <em>mouse moved</em> can also be bound to the directive to update the scene. With the <em>Responsive Canvas</em> checkbox selected try resizing the window. The canvas and the scene will resize to fit the container.</p>
+
+        <p class="muted"><a href="http://threejs.org/examples/#webgl_geometry_colors" target="_blank">&raquo; original three.js demo</a></p>
+
+      </div>
+
+      <div class="twelve columns add-bottom">
+        
+        <div 
+          id="webglContainer" 
+          ng-webgl
+          width="canvasWidth"
+          height="canvasHeight"
+          fillcontainer="dofillcontainer"
+          scale="scale"
+          material-type="materialType"
+        ></div>
+
+      </div>
+
+      <div class="four columns add-bottom">
+
+        <label for="scale">Scale Object</label>
+        <input type="range" name="scale" min="0.1" max="1.2" step="0.1" ng-model="scale" class="add-bottom">
+
+        <label for="canvasWidth">Canvas Width</label>
+        <input type="text" id="canvasWidth" ng-model="canvasWidth" ng-disabled="dofillcontainer">
+
+        <label for="canvasHeight">Canvas Height</label>
+        <input type="text" id="canvasHeight" ng-model="canvasHeight" ng-disabled="dofillcontainer">
+
+        <label for="materialsList">Material Type</label>
+          <select id="materialsList" ng-model="materialType">
+            <option value="lambert">Lambert</option>
+            <option value="phong">Phong</option>
+            <option value="wireframe">Wire Frame</option>
+          </select>
+
+        <label for="dofillcontainer">
+          <input type="checkbox" id="dofillcontainer" ng-model="dofillcontainer"/>
+          <span>Responsive Canvas</span>
+        </label>
+
+      </div>
+
+    </div><!-- END CONTAINER -->
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/three.js"></script>
+
+    <!-- scripts/scripts.js -->
+      <script src="app.js"></script>
+      <script src="ngWebgl.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>
